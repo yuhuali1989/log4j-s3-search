@@ -80,8 +80,7 @@ public class S3LogAppender extends AppenderSkeleton
 	private S3Configuration s3;
 	private SolrConfiguration solr;
 	private AmazonS3Client s3Client;	
-	
-	@Override
+
 	public void close() {
 		System.out.println("close(): Cleaning up resources");
 		if (null != stagingLog) {
@@ -90,7 +89,6 @@ public class S3LogAppender extends AppenderSkeleton
 		}
 	}
 
-	@Override
 	public boolean requiresLayout() {
 		return true;
 	}
@@ -117,11 +115,11 @@ public class S3LogAppender extends AppenderSkeleton
 		getS3().setPath(path);
 	}
 	
-	public void setS3AwsKey(String accessKey) {
+	public void setS3AccessKey(String accessKey) {
 		getS3().setAccessKey(accessKey);
 	}
 	
-	public void setS3AwsSecret(String secretKey) {
+	public void setS3SecretKey(String secretKey) {
 		getS3().setSecretKey(secretKey);
 	}
 	

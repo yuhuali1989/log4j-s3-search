@@ -9,7 +9,7 @@ import com.amazonaws.regions.Regions;
  *
  */
 public class S3Configuration {
-	public static final String DEFAULT_AWS_REGION = Regions.US_WEST_2.name();
+	public static final String DEFAULT_AWS_REGION = Regions.CN_NORTH_1.name();
 	public static final String DEFAULT_LOG_BUCKETPATH = "logs/";
 	
 	private String accessKey = null;

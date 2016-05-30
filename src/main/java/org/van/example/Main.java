@@ -25,7 +25,7 @@ public class Main {
 			logger.info("Another round through the loop!");
 			logger.warn("This is a warning!");
 			logger.error("And this is an error!!!");
-			Thread.sleep(TimeUnit.SECONDS.toMillis(7));
+			Thread.sleep(TimeUnit.SECONDS.toMillis(1));
 		}
 	}
 
