@@ -68,10 +68,17 @@ public class S3LogAppender extends AppenderSkeleton
 	implements Appender, OptionHandler {
 	
 	static final int DEFAULT_THRESHOLD = 2000;
+	//default publish interval is 600s;
+	static final long DEFAULT_PUBLISHINTERVAL = 600;
 	static final int MONITOR_PERIOD = 30;
 
-	private int stagingBufferSize = DEFAULT_THRESHOLD;	
-	
+	private long publishInterval = DEFAULT_PUBLISHINTERVAL;
+	private int stagingBufferSize = DEFAULT_THRESHOLD;
+
+	public void setPublishInterval(long publishInterval) {
+		this.publishInterval = publishInterval;
+	}
+
 	private LoggingEventCache stagingLog = null;
 	
 	private volatile String[] tags;
@@ -199,7 +206,7 @@ public class S3LogAppender extends AppenderSkeleton
 			UUID uuid = UUID.randomUUID();
 			stagingLog = new LoggingEventCache(
 				uuid.toString().replaceAll("-",""), stagingBufferSize, 
-				publisher);
+				publisher,publishInterval);
 			
 			Runtime.getRuntime().addShutdownHook(new Thread() {
 				public void run() {
