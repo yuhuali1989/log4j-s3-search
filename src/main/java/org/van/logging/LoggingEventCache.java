@@ -126,6 +126,8 @@ public class LoggingEventCache {
                 eventQueueLength++;
             } else {
                 publish = true;
+                eventQueue.add(event);
+                eventQueueLength++;
             }
         }
         if (publish) {
